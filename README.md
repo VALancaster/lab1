@@ -268,7 +268,7 @@ new_pol = 2 * pol1 + 2 * pol2 + 3.6 * q - const6
 #### Методы:
 - `std::string ToPostfix(const std::string& expression) const`  
   Преобразует инфиксное выражение в постфиксное.
-- `float Calculate()`  
+- `double Calculate()`  
   Вычисляет результат постфиксного выражения.
 
 ---
