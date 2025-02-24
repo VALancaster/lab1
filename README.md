@@ -214,6 +214,10 @@ new_pol = 2 * pol1 + 2 * pol2 + 3.6 * q - const6
   Вычитает один полином из другого.
 - `Polinom operator*(const Polinom& other) const`  
   Перемножает два полинома.
+- `Polinom operator*(double scalar) const`  
+  Умножает полином на константу.
+- `Polinom operator/(const Polinom& other) const`  
+  Делит один полином на другой (если возможно).
 - `double Evaluate(double x, double y, double z) const`  
   Вычисляет значение полинома в заданной точке.
 
@@ -226,14 +230,16 @@ new_pol = 2 * pol1 + 2 * pol2 + 3.6 * q - const6
 #### Поля:
 - `struct Node { T data; Node* next; }` — узел списка.
 - `Node* head` — указатель на начало списка.
+- `size_t sz` — размер списка.
 
 #### Методы:
-- `void InsertSorted(const T& data)`  
-  Вставляет элемент в отсортированном порядке.
-- `void Remove(const T& data)`  
-  Удаляет элемент из списка.
-- `void Print() const`  
-  Выводит список.
+- `TSingleList();` — конструктор по умолчанию.
+- `TSingleList(const vector<T>& v);` — конструктор преобразования из вектора.
+- `size_t size() const noexcept;` — возвращает размер списка.
+- `bool IsEmpty() const noexcept;` — проверяет, пуст ли список.
+- `void PushFront(const T& val);` — добавляет элемент в начало списка.
+- `void PopFront() noexcept;` — удаляет элемент из начала списка.
+- `T& Front() noexcept;` — возвращает первый элемент списка.
 
 ---
 
@@ -262,7 +268,7 @@ new_pol = 2 * pol1 + 2 * pol2 + 3.6 * q - const6
 #### Методы:
 - `std::string ToPostfix(const std::string& expression) const`  
   Преобразует инфиксное выражение в постфиксное.
-- `Polinom Calculate()`  
+- `float Calculate()`  
   Вычисляет результат постфиксного выражения.
 
 ---
@@ -272,15 +278,14 @@ new_pol = 2 * pol1 + 2 * pol2 + 3.6 * q - const6
 Шаблонный класс для работы со стеком. Используется в `Postfix`.
 
 #### Поля:
-- `std::vector<T> data` — контейнер для хранения элементов.
+- `int top` — индекс вершины стека.
+- `size_t memSize` — текущий размер памяти.
+- `T* pMem` — массив для хранения элементов.
 
 #### Методы:
-- `void Push(const T& item)`  
-  Добавляет элемент в стек.
-- `T Pop()`  
-  Удаляет и возвращает верхний элемент.
-- `T Top() const`  
-  Возвращает верхний элемент без удаления.
+- `bool IsEmpty() const;` — проверяет, пуст ли стек.
+- `void Push(const T& val);` — добавляет элемент в стек, расширяя память при необходимости.
+- `T Pop();` — удаляет и возвращает верхний элемент.
 
 ---
 
@@ -322,6 +327,7 @@ new_pol = 2 * pol1 + 2 * pol2 + 3.6 * q - const6
 - `Insert(name, polinom)`.
 - `Delete(name)`.
 - `Find(name) -> Polinom`.
-- `PrintActiveTable()`.
+- `PrintActiveTable()`. 
+
 
 
