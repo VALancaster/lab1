@@ -180,36 +180,132 @@ new_pol = 2 * pol1 + 2 * pol2 + 3.6 * q - const6
 -   Отчет о тестировании.
 
 ## Список объектов и основных алгоритмов
-
-### 1. Полином (класс `Polinom`)
+### 1. Моном (класс `Monom`)
 #### Описание
-Представляет полином от трех переменных. Полиномы хранятся в виде списка одночленов.
+`Monom` представляет собой одночлен полинома, содержащий коэффициент и степени переменных `x`, `y`, `z`. Используется в составе `Polinom`.
 
-#### Основные методы:
-- `Evaluate(x, y, z)`: вычисляет значение полинома в заданной точке.
-- `MultiplyByConstant(c)`: умножает полином на константу.
-- `Derivative(variable)`: вычисляет производную по заданной переменной.
-- `Integral(variable)`: вычисляет неопределенный интеграл по заданной переменной.
-- `operator+ (Polinom)`: сложение двух полиномов.
-- `operator- (Polinom)`: вычитание двух полиномов.
-- `operator* (Polinom)`: умножение двух полиномов.
-- `operator/ (Polinom)`: деление полиномов (если поддерживается).
+#### Поля:
+- `double coef` — коэффициент монома.
+- `int x, y, z` — степени переменных `x`, `y`, `z`.
+
+#### Методы:
+- `bool operator==(const Monom& other) const`  
+  Проверяет равенство двух мономов (по степеням).
+- `bool operator<(const Monom& other) const`  
+  Определяет порядок сортировки мономов (сравнение по степеням).
+- `Monom operator*(const Monom& other) const`  
+  Перемножает два монома.
 
 ---
 
-### 2. Таблица (абстрактный класс `TTable`)
+### 2. Полином (класс `Polinom`)
 #### Описание
-Представляет собой контейнер для хранения полиномов. Должен поддерживать несколько реализаций (массив, список, дерево, хэш-таблица).
+`Polinom` представляет собой список одночленов, отсортированных по убыванию степеней.
 
-#### Основные методы:
-- `Insert(name, polinom)`: добавляет полином во все таблицы.
-- `Delete(name)`: удаляет полином из всех таблиц.
-- `Find(name) -> Polinom`: ищет полином по имени в активной таблице.
-- `PrintActiveTable()`: выводит текущую активную таблицу.
+#### Поля:
+- `TSingleList<Monom> monoms` — список мономов, хранящий полином.
+
+#### Методы:
+- `void AddMonom(const Monom& m)`  
+  Добавляет моном в полином, объединяя подобные.
+- `Polinom operator+(const Polinom& other) const`  
+  Складывает два полинома.
+- `Polinom operator-(const Polinom& other) const`  
+  Вычитает один полином из другого.
+- `Polinom operator*(const Polinom& other) const`  
+  Перемножает два полинома.
+- `double Evaluate(double x, double y, double z) const`  
+  Вычисляет значение полинома в заданной точке.
 
 ---
 
-### 3. Таблицы (`TArrayTable`, `TListTable`, `TSortedArrayTable`, `TTreeTable`, `THashTableOpen`, `THashTableChain`)
+### 3. Односвязный список (класс `TSingleList<T>`)
+#### Описание
+Шаблонный класс для работы со связанным списком. Используется в `Polinom`.
+
+#### Поля:
+- `struct Node { T data; Node* next; }` — узел списка.
+- `Node* head` — указатель на начало списка.
+
+#### Методы:
+- `void InsertSorted(const T& data)`  
+  Вставляет элемент в отсортированном порядке.
+- `void Remove(const T& data)`  
+  Удаляет элемент из списка.
+- `void Print() const`  
+  Выводит список.
+
+---
+
+### 4. Таблица (абстрактный класс `TTable`)
+#### Описание
+Базовый класс таблицы для хранения полиномов.
+
+#### Поля:
+- `std::unordered_map<std::string, Polinom> data` — контейнер для хранения полиномов.
+
+#### Методы:
+- `virtual void Insert(const std::string& name, const Polinom& pol) = 0;`
+- `virtual void Delete(const std::string& name) = 0;`
+- `virtual Polinom Find(const std::string& name) const = 0;`
+
+---
+
+### 5. Постфиксная запись (класс `Postfix`)
+#### Описание
+Используется для обработки арифметических выражений с полиномами.
+
+#### Поля:
+- `TStack<std::string> operators` — стек операторов.
+- `TStack<Polinom> operands` — стек операндов.
+
+#### Методы:
+- `std::string ToPostfix(const std::string& expression) const`  
+  Преобразует инфиксное выражение в постфиксное.
+- `Polinom Calculate()`  
+  Вычисляет результат постфиксного выражения.
+
+---
+
+### 6. Стек (класс `TStack<T>`)
+#### Описание
+Шаблонный класс для работы со стеком. Используется в `Postfix`.
+
+#### Поля:
+- `std::vector<T> data` — контейнер для хранения элементов.
+
+#### Методы:
+- `void Push(const T& item)`  
+  Добавляет элемент в стек.
+- `T Pop()`  
+  Удаляет и возвращает верхний элемент.
+- `T Top() const`  
+  Возвращает верхний элемент без удаления.
+
+---
+
+### 7. Контроллер (класс `Controller`)
+#### Описание
+Управляет таблицами и обработкой выражений.
+
+#### Поля:
+- `std::unordered_map<std::string, std::unique_ptr<TTable>> tables` — таблицы.
+- `TTable* active_table` — активная таблица.
+- `Postfix postfix_processor` — объект обработки выражений.
+
+#### Методы:
+- `void AddTable(const std::string& type)`  
+  Добавляет таблицу.
+- `void SetActiveTable(const std::string& type)`  
+  Устанавливает активную таблицу.
+- `void AddPolinom(const std::string& name, const Polinom& pol)`  
+  Добавляет полином.
+- `Polinom EvaluateExpression(const std::string& expression)`  
+  Вычисляет выражение.
+
+---
+
+### 8. Таблицы (`TArrayTable`, `TListTable`, `TSortedArrayTable`, `TTreeTable`, `THashTableOpen`, `THashTableChain`)
 #### Описание
 Различные реализации таблиц:
 - `TArrayTable` – на массиве.
@@ -219,29 +315,13 @@ new_pol = 2 * pol1 + 2 * pol2 + 3.6 * q - const6
 - `THashTableOpen` – хеш-таблица с открытым перемешиванием.
 - `THashTableChain` – хеш-таблица с цепочками.
 
+#### Поля:
+- `std::unordered_map<std::string, Polinom> data` — контейнер для хранения полиномов.
+
 #### Методы (наследуются от `TTable`):
 - `Insert(name, polinom)`.
 - `Delete(name)`.
 - `Find(name) -> Polinom`.
 - `PrintActiveTable()`.
 
----
 
-### 4. Постфиксная запись (класс `Postfix`)
-#### Описание
-Используется для выполнения операций над полиномами в постфиксной форме.
-
-#### Основные методы:
-- `ToPostfix(expression) -> string`: преобразует инфиксное выражение в постфиксное.
-- `Calculate(operands) -> Polinom`: вычисляет выражение в постфиксной форме.
-
----
-
-### 5. Контроллер (класс `Controller`)
-#### Описание
-Отвечает за управление таблицами и обработку команд.
-
-#### Основные методы:
-- `SetActiveTable(type)`: устанавливает активную таблицу.
-- `ExecuteCommand(command)`: выполняет команду, например, вычисление выражения или добавление полинома.
-- `PrintTables()`: выводит все таблицы.
