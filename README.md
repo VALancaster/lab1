@@ -248,7 +248,6 @@ new_pol = 2 * pol1 + 2 * pol2 + 3.6 * q - const6
 Базовый класс таблицы для хранения полиномов.
 
 #### Поля:
-- `std::unordered_map<std::string, Polinom> data` — контейнер для хранения полиномов.
 
 #### Методы:
 - `virtual void Insert(const std::string& name, const Polinom& pol) = 0;`
@@ -294,20 +293,19 @@ new_pol = 2 * pol1 + 2 * pol2 + 3.6 * q - const6
 Управляет таблицами и обработкой выражений.
 
 #### Поля:
-- `std::unordered_map<std::string, std::unique_ptr<TTable>> tables` — таблицы.
+- `std::vector<TTable*> tables` — таблицы.
 - `TTable* active_table` — активная таблица.
 - `Postfix postfix_processor` — объект обработки выражений.
 
 #### Методы:
-- `void AddTable(const std::string& type)`  
-  Добавляет таблицу.
-- `void SetActiveTable(const std::string& type)`  
+- `void SetActiveTable(const TTable& table)`  
   Устанавливает активную таблицу.
 - `void AddPolinom(const std::string& name, const Polinom& pol)`  
   Добавляет полином.
 - `Polinom EvaluateExpression(const std::string& expression)`  
   Вычисляет выражение.
-
+- `void PrintActiveTable()`  
+  Печатает активную таблицу.
 ---
 
 ### 8. Таблицы (`TArrayTable`, `TListTable`, `TSortedArrayTable`, `TTreeTable`, `THashTableOpen`, `THashTableChain`)
@@ -321,13 +319,12 @@ new_pol = 2 * pol1 + 2 * pol2 + 3.6 * q - const6
 - `THashTableChain` – хеш-таблица с цепочками.
 
 #### Поля:
-- `std::unordered_map<std::string, Polinom> data` — контейнер для хранения полиномов.
 
 #### Методы (наследуются от `TTable`):
 - `Insert(name, polinom)`.
 - `Delete(name)`.
 - `Find(name) -> Polinom`.
-- `PrintActiveTable()`. 
+- `PrintTable()`. 
 
 
 
