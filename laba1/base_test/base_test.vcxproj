@@ -183,6 +183,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="base_test.cpp" />
+    <ClCompile Include="test_controller.cpp" />
+    <ClCompile Include="test_monom.cpp" />
+    <ClCompile Include="test_polinom.cpp" />
+    <ClCompile Include="test_postfix.cpp" />
+    <ClCompile Include="test_singlylist.cpp" />
+    <ClCompile Include="test_stack.cpp" />
+    <ClCompile Include="test_tarraytable.cpp" />
+    <ClCompile Include="test_thashtablechain.cpp" />
+    <ClCompile Include="test_thashtableopen.cpp" />
+    <ClCompile Include="test_tlisttable.cpp" />
+    <ClCompile Include="test_tsortedarraytable.cpp" />
+    <ClCompile Include="test_ttreetable.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

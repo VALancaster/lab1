@@ -183,13 +183,26 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="monom.cpp" />
+    <ClCompile Include="polinom.cpp" />
+    <ClCompile Include="postfix.cpp" />
+    <ClCompile Include="singlylist.cpp" />
+    <ClCompile Include="stack.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Controller.h" />
     <ClInclude Include="monom.h" />
     <ClInclude Include="polinom.h" />
     <ClInclude Include="postfix.h" />
-    <ClInclude Include="singlelist.h" />
+    <ClInclude Include="singlylist.h" />
     <ClInclude Include="stack.h" />
+    <ClInclude Include="TArrayTable.h" />
+    <ClInclude Include="THashTableChain.h" />
+    <ClInclude Include="THashTableOpen.h" />
+    <ClInclude Include="TListTable.h" />
+    <ClInclude Include="TSortedArrayTable.h" />
+    <ClInclude Include="TTable.h" />
+    <ClInclude Include="TTreeTable.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

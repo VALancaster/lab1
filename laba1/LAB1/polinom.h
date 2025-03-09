@@ -2,7 +2,7 @@
 #define POLINOM_H
 
 using namespace std;
-#include "custom_list.h"
+#include "singlylist.h"
 #include "monom.h"
 #include <string>
 #include <sstream>
@@ -10,7 +10,7 @@ using namespace std;
 
 class Polinom {
 public:
-	CustomList<Monom> monomList;
+	SinglyList<Monom> monomList;
 	void removeZeroMonoms();
 	Polinom() {};
 	Polinom(const std::string& polynomialStr);
