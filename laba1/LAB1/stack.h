@@ -13,59 +13,22 @@ class TStack
 public:
 	TStack() : top(-1), size(1), pMem(new T[size]) {}
 
-	~TStack()
-	{
-		delete[] pMem;
-	}
+	~TStack();
 
 	TStack(const TStack&) = delete;
 	TStack& operator=(const TStack&) = delete;
 
-	TStack(TStack&& other) noexcept : top(other.top), size(other.size), pMem(other.pMem)
-	{
-		other.pMem = nullptr;
-		other.top = -1;
-		other.size = 0;
-	}
+	TStack(TStack&& other) noexcept;
 
-	TStack& operator=(TStack&& other) noexcept
-	{
-		if (this != &other)
-		{
-			delete[] pMem;
-			top = other.top;
-			size = other.size;
-			pMem = other.pMem;
-			other.pMem = nullptr;
-			other.top = -1;
-			other.size = 0;
-		}
-		return *this;
-	}
+	TStack& operator=(TStack&& other) noexcept;
 
-	size_t GetSize() const { return top + 1; }
+	size_t GetSize() const;
 
-	bool IsEmpty() const { return top == -1; }
+	bool IsEmpty() const;
 
-	T Pop()
-	{
-		if (IsEmpty())
-			throw std::underflow_error("Stack is empty");
-		return pMem[top--];
-	}
+	T Pop();
 
-	void Push(const T& val)
-	{
-		if (top == size - 1)
-		{
-			size *= 2;
-			T* tmp = new T[size];
-			std::copy(pMem, pMem + top + 1, tmp);
-			delete[] pMem;
-			pMem = tmp;
-		}
-		pMem[++top] = val;
-	}
+	void Push(const T& val);
 };
 
 #endif

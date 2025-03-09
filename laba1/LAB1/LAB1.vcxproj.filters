@@ -18,6 +18,21 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="monom.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="polinom.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="postfix.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="singlylist.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stack.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="monom.h">
@@ -29,7 +44,7 @@
     <ClInclude Include="stack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="singlelist.h">
+    <ClInclude Include="singlylist.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="postfix.h">

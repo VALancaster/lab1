@@ -183,12 +183,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="monom.cpp" />
+    <ClCompile Include="polinom.cpp" />
+    <ClCompile Include="postfix.cpp" />
+    <ClCompile Include="singlylist.cpp" />
+    <ClCompile Include="stack.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="monom.h" />
     <ClInclude Include="polinom.h" />
     <ClInclude Include="postfix.h" />
-    <ClInclude Include="singlelist.h" />
+    <ClInclude Include="singlylist.h" />
     <ClInclude Include="stack.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
