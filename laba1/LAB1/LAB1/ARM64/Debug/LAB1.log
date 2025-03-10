@@ -1,73 +1,16 @@
-﻿  polinom.cpp
+﻿  main.cpp
+  monom.cpp
+  polinom.cpp
+  postfix.cpp
   singlylist.cpp
-C:\Users\vkutergi\source\lab1\laba1\LAB1\singlylist.cpp(1,10): error C1083: Cannot open include file: 'singlelist.h': No such file or directory
-  stack.cpp
-C:\Users\vkutergi\source\lab1\laba1\LAB1\stack.cpp(3,1): error C2955: 'TStack': use of class template requires template argument list
-      C:\Users\vkutergi\source\lab1\laba1\LAB1\stack.h(7,7):
-      see declaration of 'TStack'
-  
-C:\Users\vkutergi\source\lab1\laba1\LAB1\stack.cpp(3,10): error C2955: 'TStack': use of class template requires template argument list
-      C:\Users\vkutergi\source\lab1\laba1\LAB1\stack.h(7,7):
-      see declaration of 'TStack'
-  
-C:\Users\vkutergi\source\lab1\laba1\LAB1\stack.cpp(3,10): error C2509: '{dtor}': member function not declared in 'TStack'
-      C:\Users\vkutergi\source\lab1\laba1\LAB1\stack.h(7,7):
-      see declaration of 'TStack'
-  
-C:\Users\vkutergi\source\lab1\laba1\LAB1\stack.cpp(8,9): error C2955: 'TStack': use of class template requires template argument list
-      C:\Users\vkutergi\source\lab1\laba1\LAB1\stack.h(7,7):
-      see declaration of 'TStack'
-  
-C:\Users\vkutergi\source\lab1\laba1\LAB1\stack.cpp(8,9): error C2509: '{ctor}': member function not declared in 'TStack'
-      C:\Users\vkutergi\source\lab1\laba1\LAB1\stack.h(7,7):
-      see declaration of 'TStack'
-  
-C:\Users\vkutergi\source\lab1\laba1\LAB1\stack.cpp(8,47): error C2065: 'other': undeclared identifier
-C:\Users\vkutergi\source\lab1\laba1\LAB1\stack.cpp(8,64): error C2065: 'other': undeclared identifier
-C:\Users\vkutergi\source\lab1\laba1\LAB1\stack.cpp(8,82): error C2065: 'other': undeclared identifier
-C:\Users\vkutergi\source\lab1\laba1\LAB1\stack.cpp(15,17): error C2955: 'TStack': use of class template requires template argument list
-      C:\Users\vkutergi\source\lab1\laba1\LAB1\stack.h(7,7):
-      see declaration of 'TStack'
-  
-C:\Users\vkutergi\source\lab1\laba1\LAB1\stack.cpp(15,42): error C2143: syntax error: missing ',' before 'noexcept'
-C:\Users\vkutergi\source\lab1\laba1\LAB1\stack.cpp(15,17): error C2509: '=': member function not declared in 'TStack'
-      C:\Users\vkutergi\source\lab1\laba1\LAB1\stack.h(7,7):
-      see declaration of 'TStack'
-  
-C:\Users\vkutergi\source\lab1\laba1\LAB1\stack.cpp(30,16): error C2955: 'TStack': use of class template requires template argument list
-      C:\Users\vkutergi\source\lab1\laba1\LAB1\stack.h(7,7):
-      see declaration of 'TStack'
-  
-C:\Users\vkutergi\source\lab1\laba1\LAB1\stack.cpp(30,16): error C2509: 'GetSize': member function not declared in 'TStack'
-      C:\Users\vkutergi\source\lab1\laba1\LAB1\stack.h(7,7):
-      see declaration of 'TStack'
-  
-C:\Users\vkutergi\source\lab1\laba1\LAB1\stack.cpp(35,14): error C2955: 'TStack': use of class template requires template argument list
-      C:\Users\vkutergi\source\lab1\laba1\LAB1\stack.h(7,7):
-      see declaration of 'TStack'
-  
-C:\Users\vkutergi\source\lab1\laba1\LAB1\stack.cpp(35,14): error C2509: 'IsEmpty': member function not declared in 'TStack'
-      C:\Users\vkutergi\source\lab1\laba1\LAB1\stack.h(7,7):
-      see declaration of 'TStack'
-  
-C:\Users\vkutergi\source\lab1\laba1\LAB1\stack.cpp(40,11): error C2955: 'TStack': use of class template requires template argument list
-      C:\Users\vkutergi\source\lab1\laba1\LAB1\stack.h(7,7):
-      see declaration of 'TStack'
-  
-C:\Users\vkutergi\source\lab1\laba1\LAB1\stack.cpp(40,11): error C2143: syntax error: missing ';' before 'TStack<T>::Pop'
-C:\Users\vkutergi\source\lab1\laba1\LAB1\stack.cpp(40,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-C:\Users\vkutergi\source\lab1\laba1\LAB1\stack.cpp(40,11): error C2509: 'Pop': member function not declared in 'TStack'
-      C:\Users\vkutergi\source\lab1\laba1\LAB1\stack.h(7,7):
-      see declaration of 'TStack'
-  
-C:\Users\vkutergi\source\lab1\laba1\LAB1\stack.cpp(47,14): error C2955: 'TStack': use of class template requires template argument list
-      C:\Users\vkutergi\source\lab1\laba1\LAB1\stack.h(7,7):
-      see declaration of 'TStack'
-  
-C:\Users\vkutergi\source\lab1\laba1\LAB1\stack.cpp(47,19): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-C:\Users\vkutergi\source\lab1\laba1\LAB1\stack.cpp(47,26): error C2143: syntax error: missing ',' before '&'
-C:\Users\vkutergi\source\lab1\laba1\LAB1\stack.cpp(47,14): error C2509: 'Push': member function not declared in 'TStack'
-      C:\Users\vkutergi\source\lab1\laba1\LAB1\stack.h(7,7):
-      see declaration of 'TStack'
-  
   Generating Code...
+C:\Users\vkutergi\source\lab1\laba1\LAB1\singlylist.cpp(154,37): error C2350: 'SinglyList<Type>::operator =' is not a static member
+      C:\Users\vkutergi\source\lab1\laba1\LAB1\singlylist.cpp(154,37):
+      see declaration of 'SinglyList<Type>::operator ='
+  
+C:\Users\vkutergi\source\lab1\laba1\LAB1\singlylist.cpp(154,47): error C2065: 'List': undeclared identifier
+C:\Users\vkutergi\source\lab1\laba1\LAB1\singlylist.cpp(154,54): error C2065: 'source': undeclared identifier
+C:\Users\vkutergi\source\lab1\laba1\LAB1\singlylist.cpp(154,62): error C2988: unrecognizable template declaration/definition
+C:\Users\vkutergi\source\lab1\laba1\LAB1\singlylist.cpp(154,62): error C2059: syntax error: 'noexcept'
+C:\Users\vkutergi\source\lab1\laba1\LAB1\singlylist.cpp(155,1): error C2143: syntax error: missing ';' before '{'
+C:\Users\vkutergi\source\lab1\laba1\LAB1\singlylist.cpp(155,1): error C2447: '{': missing function header (old-style formal list?)
