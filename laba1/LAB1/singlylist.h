@@ -16,30 +16,144 @@ private:
 	Element* lastElement;
 	size_t elementCount;
 
-	Element* fetchElement(size_t index) const;
+	Element* fetchElement(size_t index) const
+	{
+		if (index >= elementCount)
+			throw std::out_of_range("Index out of range");
+		Element* temp = firstElement;
+		for (size_t i = 0; i < index; ++i)
+			temp = temp->next;
+		return temp;
+	}
 
 public:
-	SinglyList();
-	SinglyList(const SinglyList& source);
-	SinglyList(SinglyList&& source) noexcept;
-	~SinglyList();
+	SinglyList() : elementCount(0), firstElement(nullptr), lastElement(nullptr) {};
+	SinglyList(const SinglyList& source) : elementCount(0), firstElement(nullptr), lastElement(nullptr)
+	{
+		for (Element* node = source.firstElement; node; node = node->next)
+			addToEnd(node->data);
+	}
+	SinglyList(SinglyList&& source) noexcept : firstElement(source.firstElement), lastElement(source.lastElement), elementCount(source.elementCount)
+	{
+		source.firstElement = source.lastElement = nullptr;
+		source.elementCount = 0;
+	}
+	~SinglyList()
+	{
+		reset();
+	}
 
-	size_t length() const noexcept;
-	bool empty() const noexcept;
+	size_t length() const noexcept
+	{
+		return elementCount;
+	}
+	bool empty() const noexcept
+	{
+		return elementCount == 0;
+	}
 
-	void addToEnd(const Type& data);
-	void addToStart(const Type& data);
-	void eraseAt(size_t index);
-	void reset();
+	void addToEnd(const Type& data)
+	{
+		Element* newNode = new Element{ data };
+		if (lastElement)
+			lastElement->next = newNode;
+		else
+			firstElement = newNode;
+		lastElement = newNode;
+		++elementCount;
+	}
+	void addToStart(const Type& data)
+	{
+		Element* newNode = new Element{ data, firstElement };
+		firstElement = newNode;
+		if (!lastElement)
+			lastElement = newNode;
+		++elementCount;
+	}
+	void eraseAt(size_t index)
+	{
+		if (index >= elementCount)
+			throw std::out_of_range("Index out of range");
+		Element* toRemove = nullptr;
+		if (index == 0)
+		{
+			toRemove = firstElement;
+			firstElement = firstElement->next;
+			if (!firstElement) lastElement = nullptr;
+		}
+		else
+		{
+			Element* prev = fetchElement(index - 1);
+			toRemove = prev->next;
+			prev->next = toRemove->next;
+			if (index == elementCount - 1)
+				lastElement = prev;
+		}
+		delete toRemove;
+		--elementCount;
+	}
+	void reset()
+	{
+		while (firstElement)
+		{
+			Element* temp = firstElement;
+			firstElement = firstElement->next;
+			delete temp;
+		}
+		lastElement = nullptr;
+		elementCount = 0;
+	}
 
-	Type& getItem(size_t index);
-	const Type& getItem(size_t index) const;
+	Type& getItem(size_t index)
+	{
+		return fetchElement(index)->data;
+	}
+	const Type& getItem(size_t index) const
+	{
+		return fetchElement(index)->data;
+	}
 
-	bool operator==(const SinglyList& source) const noexcept;
-	bool operator!=(const SinglyList& source) const noexcept;
+	bool operator==(const SinglyList& source) const noexcept
+	{
+		if (elementCount != source.elementCount)
+			return false;
+		Element* current1 = firstElement;
+		Element* current2 = source.firstElement;
+		while (current1)
+		{
+			if (current1->data != current2->data)
+				return false;
+			current1 = current1->next;
+			current2 = current2->next;
+		}
+		return true;
+	}
+	bool operator!=(const SinglyList& source) const noexcept
+	{
+		return !(*this == source);
+	}
 
-	SinglyList& operator=(const SinglyList& source);
-	SinglyList& operator=(SinglyList&& source) noexcept;
+	SinglyList& operator=(const SinglyList& source)
+	{
+		if (this == &source)
+			return *this;
+		reset();
+		for (Element* node = source.firstElement; node; node = node->next)
+			addToEnd(node->data);
+		return *this;
+	}
+	SinglyList& operator=(SinglyList&& source) noexcept
+	{
+		if (this == &source)
+			return *this;
+		reset();
+		firstElement = source.firstElement;
+		lastElement = source.lastElement;
+		elementCount = source.elementCount;
+		source.firstElement = source.lastElement = nullptr;
+		source.elementCount = 0;
+		return *this;
+	}
 
 	class Iter {
 	private:

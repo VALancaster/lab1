@@ -20,13 +20,16 @@ public:
 	TStack(const TStack&) = delete;
 	TStack& operator=(const TStack&) = delete;
 
+
 	TStack(TStack&& other) noexcept {
 		other.pMem = nullptr;
 		other.top = -1;
 		other.size = 0;
 	}
 
+
 	TStack& operator=(TStack&& other) noexcept {
+
 		if (this != &other)
 		{
 			delete[] pMem;
@@ -38,8 +41,9 @@ public:
 			other.size = 0;
 		}
 		return *this;
-	};
 
+	}
+  
 	size_t GetSize() const {
 		return top + 1;
 	}

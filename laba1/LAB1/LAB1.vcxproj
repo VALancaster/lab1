@@ -186,8 +186,6 @@
     <ClCompile Include="monom.cpp" />
     <ClCompile Include="polinom.cpp" />
     <ClCompile Include="postfix.cpp" />
-    <ClCompile Include="singlylist.cpp" />
-    <ClCompile Include="stack.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Controller.h" />
